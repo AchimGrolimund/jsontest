@@ -28,6 +28,9 @@ type Teams struct {
 	Deletetime string `json:"deletetime"`
 }
 
+/*
+https://discord.com/channels/118456055842734083/118456055842734083/805382974995693609
+*/
 /* JSON Plain
 
 {
