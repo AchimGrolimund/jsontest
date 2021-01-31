@@ -35,16 +35,3 @@ func WriteComplianceDB(file string, data interface{}) error {
 	}
 	return nil
 }
-
-func UpdateDashboards(compliDB *compliance.ComplianceDB, userID string, new_dbs *compliance.Dashboards) {
-	for _, val := range compliDB.Users {
-			for _, db := range val.Dashboards {
-				if db.ID == new_dbs.ID {
-					db.ID = new_dbs.ID
-					db.Name = new_dbs.Name
-					db.Deletetime = new_dbs.Deletetime
-				}
-			}
-		}
-	}
-}
