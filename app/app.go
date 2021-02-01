@@ -3,38 +3,26 @@ package app
 import (
 	"jsontest/controllers/compliance"
 	compliance2 "jsontest/models/compliance"
+	"jsontest/utils"
 	"log"
 )
 
-const (
-	filepath = "complianceDB.json"
-)
-
 func Start() {
+	var database = compliance2.ComplianceDB{}
 
-	database, err := compliance2.ComplianceDB.Load()
-	if err != nil {
+	if err := database.Load(); err != nil {
 		log.Fatalln(err)
 	}
 
-	/*
-		utils.MakeData(result, 5)
+	utils.MakeData(&database, 5)
 
-		if err := compliance.WriteComplianceDB(filepath, result); err != nil {
-			log.Fatalln(err)
-		}
+	updateDate := compliance2.Dashboards{
+		ID:         "xyz",
+		Name:       "Dashboardname",
+		Deletetime: "ffffffff",
+	}
 
-	*/
-	/*
-		updateDate := compliance2.Dashboards{
-			ID: "xyz",
-			Name:       "Updated Dashboardname",
-			Deletetime: "dfghghgh",
-		}
-
-	*/
-
-	compliance.DeleteDashboard(database, "1", "0")
+	compliance.UpdateDashboards(&database, "1", &updateDate)
 
 	if err := database.Save(); err != nil {
 		log.Fatalln(err)

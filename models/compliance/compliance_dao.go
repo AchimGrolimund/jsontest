@@ -22,15 +22,15 @@ func checkIfComplianceDBExists(file string) bool {
 	return false
 }
 
-func (db *ComplianceDB) Load() (*ComplianceDB, error) {
+func (db *ComplianceDB) Load() error {
 	if check := checkIfComplianceDBExists(filepath); check == false {
-		return nil, nil
+		return nil
 	}
 	result, _ := ioutil.ReadFile(filepath)
 	if err := json.Unmarshal(result, db); err != nil {
-		return nil, err
+		return err
 	}
-	return db, nil
+	return nil
 }
 
 func (db *ComplianceDB) Save() error {

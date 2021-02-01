@@ -13,19 +13,25 @@ type Users struct {
 }
 
 type Dashboards struct {
-	ID         string `json:"id"`
-	Name       string `json:"name"`
-	Deletetime string `json:"deletetime"`
+	ID           string `json:"id"`
+	Name         string `json:"name"`
+	Deletetime   string `json:"deletetime"`
+	SendInfoMail bool   `json:"send_info_mail"`
+	SendWarnMail bool   `json:"send_warn_mail"`
 }
 type Detectors struct {
-	ID         string `json:"id"`
-	Name       string `json:"name"`
-	Deletetime string `json:"deletetime"`
+	ID           string `json:"id"`
+	Name         string `json:"name"`
+	Deletetime   string `json:"deletetime"`
+	SendInfoMail bool   `json:"send_info_mail"`
+	SendWarnMail bool   `json:"send_warn_mail"`
 }
 type Teams struct {
-	ID         string `json:"id"`
-	Name       string `json:"name"`
-	Deletetime string `json:"deletetime"`
+	ID           string `json:"id"`
+	Name         string `json:"name"`
+	Deletetime   string `json:"deletetime"`
+	SendInfoMail bool   `json:"send_info_mail"`
+	SendWarnMail bool   `json:"send_warn_mail"`
 }
 
 /*
