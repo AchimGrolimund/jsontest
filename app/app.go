@@ -12,9 +12,7 @@ const (
 
 func Start() {
 
-	var complDB = new(compliance2.ComplianceDB)
-
-	complDB, err := compliance.ReadComplianceDB(filepath)
+	database, err := compliance2.ComplianceDB.Load()
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -36,9 +34,9 @@ func Start() {
 
 	*/
 
-	compliance.DeleteDashboard(complDB, "1", "0")
+	compliance.DeleteDashboard(database, "1", "0")
 
-	if err := compliance.WriteComplianceDB(filepath, complDB); err != nil {
+	if err := database.Save(); err != nil {
 		log.Fatalln(err)
 	}
 
