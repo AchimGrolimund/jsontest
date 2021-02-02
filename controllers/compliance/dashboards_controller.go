@@ -58,7 +58,7 @@ func AddDashboard(compliDB *compliance.ComplianceDB, userID string, newDashboard
 	}
 }
 
-func DeleteDashboard(compliDB *compliance.ComplianceDB, userID string, _id string) {
+func DeleteDashboard(compliDB *compliance.ComplianceDB, userID string, dashboardID string) {
 	for i := range compliDB.Users {
 		user := &compliDB.Users[i]
 		if user.ID != userID {
@@ -67,7 +67,7 @@ func DeleteDashboard(compliDB *compliance.ComplianceDB, userID string, _id strin
 
 		for j := range user.Dashboards {
 			dashboard := &user.Dashboards[j]
-			if dashboard.ID == _id {
+			if dashboard.ID == dashboardID {
 				user.Dashboards = append(user.Dashboards[:j], user.Dashboards[j+1:]...)
 				break
 			}
