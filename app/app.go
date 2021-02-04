@@ -1,6 +1,7 @@
 package app
 
 import (
+	"fmt"
 	"jsontest/controllers/compliance"
 	compliance2 "jsontest/models/compliance"
 	"jsontest/utils"
@@ -17,7 +18,7 @@ func Start() {
 		DetectorDB
 	*/
 	var CDB = compliance2.ComplianceDB{}
-	var members map[string]string
+	//var members map[string]string
 	//.....
 	//----------------------------------------------------------
 
@@ -51,7 +52,8 @@ func Start() {
 	//
 	// Below is only for Testing
 	//
-	utils.MakeData(&CDB, 5)
+
+	//utils.MakeData(&CDB, 5)
 
 	updateDate := compliance2.Dashboards{
 		ID:         "xyz",
@@ -64,5 +66,11 @@ func Start() {
 	if err := CDB.Save(); err != nil {
 		log.Fatalln(err)
 	}
+
+	test, err := utils.BuildEmail(CDB.Users[1])
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(test)
 
 }
