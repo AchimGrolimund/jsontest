@@ -8,7 +8,7 @@ import (
 
 func BuildEmail(userdata interface{}) (string, error) {
 
-	html, err := template.ParseFiles("email.html")
+	html, err := template.ParseFiles("email.min.html")
 	if err != nil {
 		log.Fatal(err)
 		return "", err

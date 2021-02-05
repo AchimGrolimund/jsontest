@@ -1,70 +1,95 @@
-<style type="text/css">
-        .tg  {border-collapse:collapse;border-spacing:0;}
-        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-                overflow:hidden;padding:10px 5px;word-break:normal;}
-        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-                font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-        .tg .tg-z2al{font-family:Tahoma, Geneva, sans-serif !important;;font-weight:bold;text-align:center;vertical-align:top}
-        .tg .tg-waok{border-color:inherit;font-family:Tahoma, Geneva, sans-serif !important;;font-weight:bold;text-align:center;
-                vertical-align:top}
-        .tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
+<html>
+<style>#Items {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 60%
+    }
+
+    #Items tbody td, #Items thead th {
+        border: 1px solid #ddd;
+        padding: 8px
+    }</style>
+<body>
 <h2>Dashboards</h2>
-<table class="tg">
-        <thead>
+<table id=Items>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Delete in</th>
+    </tr>
+    </thead>
+    <tbody>{{range .Dashboards}}{{if not .SendInfoMail}}<!-- Is SendInfoMail == false -->
         <tr>
-                <th class="tg-waok">ID</th>
-                <th class="tg-z2al">Name</th>
-                <th class="tg-z2al">Delete at</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{range .Dashboards}}
-        <tr>
-                <td class="tg-0lax">{{.ID}}</td>
-                <td class="tg-0lax">{{.Name}}</td>
-                <td class="tg-0lax">{{.Deletetime}}</td>
-        </tr>
-        {{end}}
-        </tbody>
+            <td>{{.ID}}</td>
+            <td>{{.Name}}</td>
+            <td>15 Days</td>
+        </tr>{{end}}{{if .SendInfoMail}}{{if not .SendWarnMail}}{{if lt .Deletetime 440000}}
+            <tr style=background-color:#f39c12>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td><strong>5 Days</strong></td>
+            </tr>{{end}}{{end}}{{end}}{{if .SendInfoMail}}{{if .SendWarnMail}}{{if lt .Deletetime 93000}}
+            <tr style=background-color:#fe0000>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td><strong>1 Day</strong></td>
+            </tr>{{end}}{{end}}{{end}}{{end}}
+    </tbody>
 </table>
-
 <h2>Detectors</h2>
-<table class="tg">
-        <thead>
+<table id=Items>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Delete in</th>
+    </tr>
+    </thead>
+    <tbody>{{range .Detectors}}{{if not .SendInfoMail}}
         <tr>
-                <th class="tg-waok">ID</th>
-                <th class="tg-z2al">Name</th>
-                <th class="tg-z2al">Delete at</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{range .Detectors}}
-                <tr>
-                        <td class="tg-0lax">{{.ID}}</td>
-                        <td class="tg-0lax">{{.Name}}</td>
-                        <td class="tg-0lax">{{.Deletetime}}</td>
-                </tr>
-        {{end}}
-        </tbody>
+            <td>{{.ID}}</td>
+            <td>{{.Name}}</td>
+            <td>15 Days</td>
+        </tr>{{end}}{{if .SendInfoMail}}{{if not .SendWarnMail}}{{if lt .Deletetime 440000}}
+            <tr style=background-color:#f39c12>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td><strong>5 Days</strong></td>
+            </tr>{{end}}{{end}}{{end}}{{if .SendInfoMail}}{{if .SendWarnMail}}{{if lt .Deletetime 93000}}
+            <tr style=background-color:#fe0000>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td><strong>1 Day</strong></td>
+            </tr>{{end}}{{end}}{{end}}{{end}}
+    </tbody>
 </table>
-
 <h2>Teams</h2>
-<table class="tg">
-        <thead>
+<table id=Items>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Delete in</th>
+    </tr>
+    </thead>
+    <tbody>{{range .Teams}}{{if not .SendInfoMail}}
         <tr>
-                <th class="tg-waok">ID</th>
-                <th class="tg-z2al">Name</th>
-                <th class="tg-z2al">Delete at</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{range .Teams}}
-                <tr>
-                        <td class="tg-0lax">{{.ID}}</td>
-                        <td class="tg-0lax">{{.Name}}</td>
-                        <td class="tg-0lax">{{.Deletetime}}</td>
-                </tr>
-        {{end}}
-        </tbody>
+            <td>{{.ID}}</td>
+            <td>{{.Name}}</td>
+            <td>15 Days</td>
+        </tr>{{end}}{{if .SendInfoMail}}{{if not .SendWarnMail}}{{if lt .Deletetime 440000}}
+            <tr style=background-color:#f39c12>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td><strong>5 Days</strong></td>
+            </tr>{{end}}{{end}}{{end}}{{if .SendInfoMail}}{{if .SendWarnMail}}{{if lt .Deletetime 93000}}
+            <tr style=background-color:#fe0000>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td><strong>1 Day</strong></td>
+            </tr>{{end}}{{end}}{{end}}{{end}}
+    </tbody>
 </table>
+</body>
+</html>
