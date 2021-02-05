@@ -2,7 +2,6 @@ package app
 
 import (
 	"fmt"
-	"jsontest/controllers/compliance"
 	compliance2 "jsontest/models/compliance"
 	"jsontest/utils"
 	"log"
@@ -53,15 +52,17 @@ func Start() {
 	// Below is only for Testing
 	//
 
-	//utils.MakeData(&CDB, 5)
+	//utils.MakeData(&CDB, 2)
+	/*
+		updateDate := compliance2.Dashboards{
+			ID:         "xyz",
+			Name:       "Dashboardname",
+			Deletetime: 120,
+		}
 
-	updateDate := compliance2.Dashboards{
-		ID:         "xyz",
-		Name:       "Dashboardname",
-		Deletetime: "ffffffff",
-	}
+	*/
 
-	compliance.UpdateDashboards(&CDB, "1", &updateDate)
+	//compliance.AddDashboard(&CDB, "1", &updateDate)
 
 	if err := CDB.Save(); err != nil {
 		log.Fatalln(err)
